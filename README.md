@@ -1,6 +1,6 @@
 # Persona
 
-A Next.js chat app where you talk to AI personas modeled after real YouTube educators — currently **Hitesh Choudhary** and **Piyush Garg**. Each persona has its own tone, vocabulary, and teaching style baked into the system prompt, and can search its own YouTube channel to recommend relevant videos mid-conversation.
+A Next.js chat app where you talk to AI personas modeled after real YouTube educators — currently we have 2 educators. Each persona has its own tone, vocabulary, and teaching style baked into the system prompt, and can search its own YouTube channel to recommend relevant videos mid-conversation.
 
 ## How it works
 
@@ -47,8 +47,6 @@ OPENAI_API_BASE_URL=https://api.deepseek.com
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
 ## Adding a new persona
 
 1. Create `src/personas/<name>.ts` exporting a `PersonaProfile` (see `hitesh.ts` / `piyush.ts` for the shape: `id`, `name`, `youtubeChannelId`, `tone`, `vocabulary`, `teachingStyle`, `rules`).
@@ -75,8 +73,3 @@ src/
     youtube/                 # searchYoutube tool definition + handler
   types/                     # shared TypeScript types
 ```
-
-## Notes
-
-- `.env.local` is git-ignored — never commit real API keys.
-- The chat agent currently does a fixed two-call loop (LLM → optional tool → LLM) rather than a general tool loop; see the comment at the bottom of `chatAgent.ts`.
